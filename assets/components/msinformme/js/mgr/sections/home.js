@@ -16,7 +16,13 @@ msInformMe.panel.InformForm = function(config) {
     Ext.apply(config, {
         baseParams: {},
         items: [{
-            layout: 'anchor',
+            layout: 'form',
+            defaults: {
+                labelSeparator: '',
+                labelAlign: 'top',
+                border: false,
+                msgTarget: 'under'
+            },
             items: [{
                 title: _('msinformme_open_send'),
                 xtype: 'fieldset',
@@ -37,7 +43,17 @@ msInformMe.panel.InformForm = function(config) {
                     }
                 },
                 items: [{
-                    tbar: this.getTopBar(config),
+                    //tbar: this.getTopBar(config),
+                    xtype: 'textfield',
+                    layout:'column',
+                    anchor: '100%',
+                    vtype: 'email',
+                    id: 'msinformme-input-email',
+                    name: 'im_email',
+                    emptyText: 'user@domain.com',
+                    value: miniShop2.msInformMe.im_email
+                },{
+                    tbar: this.getButton()
                 }]
             }]
         }]
@@ -46,21 +62,12 @@ msInformMe.panel.InformForm = function(config) {
 };
 Ext.extend(msInformMe.panel.InformForm, MODx.Panel, {
 
-    getTopBar: function () {
-        return [{
-            xtype: 'textfield',
-            vtype: 'email',
-            id: 'msinformme-input-email',
-            width: 250,
-            name: 'im_email',
-            emptyText: 'user@domain.com',
-            style: {'padding': '5px'},
-            value: miniShop2.msInformMe.im_email
-        },{
+    getButton: function() {
+        return [ '->', {
             xtype: 'button',
             text: '<i class="icon icon-send"></i>&nbsp;&nbsp;' + _('msinformme_button_send'),
             handler: this.send,
-        }];
+        }]
     },
 
     send: function() {
