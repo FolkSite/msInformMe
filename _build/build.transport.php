@@ -101,38 +101,6 @@ if (defined('BUILD_TEMPLATE_UPDATE')) {
     }
 }
 
-// add snippets
-//if (defined('BUILD_SNIPPET_UPDATE')) {
-//    $attr[xPDOTransport::RELATED_OBJECT_ATTRIBUTES]['Snippets'] = array(
-//        xPDOTransport::PRESERVE_KEYS => false,
-//        xPDOTransport::UPDATE_OBJECT => BUILD_SNIPPET_UPDATE,
-//        xPDOTransport::UNIQUE_KEY => 'name',
-//    );
-//    $snippets = include $sources['data'] . 'transport.snippets.php';
-//    if (!is_array($snippets)) {
-//        $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in snippets.');
-//    } else {
-//        $category->addMany($snippets);
-//        $modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($snippets) . ' snippets.');
-//    }
-//}
-
-// add chunks
-//if (defined('BUILD_CHUNK_UPDATE')) {
-//    $attr[xPDOTransport::RELATED_OBJECT_ATTRIBUTES]['Chunks'] = array(
-//        xPDOTransport::PRESERVE_KEYS => false,
-//        xPDOTransport::UPDATE_OBJECT => BUILD_CHUNK_UPDATE,
-//        xPDOTransport::UNIQUE_KEY => 'name',
-//    );
-//    $chunks = include $sources['data'] . 'transport.chunks.php';
-//    if (!is_array($chunks)) {
-//        $modx->log(modX::LOG_LEVEL_ERROR, 'Could not package in chunks.');
-//    } else {
-//        $category->addMany($chunks);
-//        $modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($chunks) . ' chunks.');
-//    }
-//}
-
 // add plugins
 if (defined('BUILD_PLUGIN_UPDATE')) {
     $attr[xPDOTransport::RELATED_OBJECT_ATTRIBUTES]['Plugins'] = array(
@@ -184,14 +152,6 @@ $builder->setPackageAttributes(array(
     'license' => file_get_contents($sources['docs'] . 'license.txt'),
     'readme' => file_get_contents($sources['docs'] . 'readme.txt'),
 //    'chunks' => $BUILD_CHUNKS,
-//    'setup-options' => array(
-//        'source' => $sources['build'] . 'setup.options.php',
-//    ),
-    /*
-    'requires' => array(
-        'pdotools' => '>=2.5.0-pl',
-    ),
-    */
 ));
 $modx->log(modX::LOG_LEVEL_INFO, 'Added package attributes and setup options.');
 

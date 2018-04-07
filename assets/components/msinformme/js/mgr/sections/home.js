@@ -1,10 +1,9 @@
-Ext.ComponentMgr.onAvailable('minishop2-product-tabs', function() {
+Ext.ComponentMgr.onAvailable('modx-resource-main-right', function() {
     this.on('beforerender', function() {
-        var option = this.items.items[2];
-
-        option.insert(0, {
+        this.add({
             id: 'msinformme-pahel',
             layout: 'anchor',
+            width: '100%',
             items: [{
                 xtype: 'msinformme-item-panel'
             }]
@@ -48,7 +47,7 @@ msInformMe.panel.InformForm = function(config) {
 Ext.extend(msInformMe.panel.InformForm, MODx.Panel, {
 
     getTopBar: function () {
-        return [ '->', {
+        return [{
             xtype: 'textfield',
             vtype: 'email',
             id: 'msinformme-input-email',
